@@ -12,8 +12,8 @@
     />
   </head>
   <body>
-    <div class="announcement-banner">
-      📢 Activity registration is open until the end of the month. Don't lose your spot!
+    <div id="announcement-banner-container">
+      <!-- Announcements loaded dynamically from database -->
     </div>
     <!-- Registration Modal -->
 
@@ -28,6 +28,7 @@
           </button>
           <div id="user-info" class="hidden">
             <span id="display-name"></span>
+            <button id="manage-announcements-button" class="icon-button" title="Manage Announcements">📢</button>
             <button id="logout-button">Logout</button>
           </div>
         </div>
@@ -135,6 +136,44 @@
           <button type="submit">Login</button>
         </form>
         <div id="login-message" class="hidden message"></div>
+      </div>
+    </div>
+
+    <!-- Announcements Management Modal -->
+    <div id="announcements-modal" class="modal hidden">
+      <div class="modal-content announcements-modal-content">
+        <span class="close-announcements-modal">&times;</span>
+        <h3>📢 Manage Announcements</h3>
+        <div class="announcements-toolbar">
+          <button id="add-announcement-button" class="add-announcement-btn">+ New Announcement</button>
+        </div>
+        <div id="announcements-list" class="announcements-list">
+          <p>Loading announcements...</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Announcement Form Modal -->
+    <div id="announcement-form-modal" class="modal hidden">
+      <div class="modal-content">
+        <span class="close-announcement-form">&times;</span>
+        <h3 id="announcement-form-title">New Announcement</h3>
+        <form id="announcement-form">
+          <div class="form-group">
+            <label for="announcement-message">Message:</label>
+            <textarea id="announcement-message" required rows="3" placeholder="Enter announcement text..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="announcement-start-date">Start Date (optional):</label>
+            <input type="date" id="announcement-start-date" />
+          </div>
+          <div class="form-group">
+            <label for="announcement-expiration-date">Expiration Date:</label>
+            <input type="date" id="announcement-expiration-date" required />
+          </div>
+          <input type="hidden" id="announcement-edit-id" value="" />
+          <button type="submit">Save Announcement</button>
+        </form>
       </div>
     </div>
 
